@@ -13,9 +13,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-<script type="text/javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" src="scripts/script.js"></script> 
-<title>ShoutBox Development</title>
+<title>ShoutBox</title>
 </head>
 <body>
 

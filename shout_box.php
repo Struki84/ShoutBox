@@ -7,6 +7,7 @@
 		ShoutBox::insertPost($data);
 	}
 	
+	#This one goes out if there is no delete link
 	if ($action == 'delete') {
 		ShoutBox::deleteOne($id);
 		header('Location:index.php');
@@ -22,6 +23,7 @@
 				<li>
 					<em>On <?=$comment->date()?>, <?=$comment->name()?> wrote:</em>
 					<p><?=$comment->text()?></p>
+					<!--Comment this link out for the frontend if you wish-->
 					<a href="index.php?action=delete&id=<?=$comment->id()?>"> delete comment</a>
 				</li>
 			</ul>	
