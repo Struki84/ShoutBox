@@ -1,1 +1,19 @@
-TEST READ ME FILE!
+*************WARNING!**************
+
+This small shout box is not proteceted against SQL injection, so before using make sure you real escape string or use any other method of protection against this hack!
+
+***********************************
+
+HOW TO USE
+
+- To use on you'r web, just include the shout box php file ( include_once(shout_box.php) ), and then style it and position it with some css (id="shout_box"). 
+- Put the class_lib.php in the same folder as the shout_box.php file, or modify the paths acordingly.
+- Use shout_box_table.sql to create database table
+- Follow the comments...
+
+LICENCE
+
+None! Use it as you see fit!
+
+
+
