@@ -6,25 +6,20 @@
 </head>
 <body>
 
-<?  # Connect to MySQL database
-    include_once "class_lib.php";
-    $db = new Database('localhost', 'root', 'root', 'development'); //- modify database parameters for your connection (HOST, USERNAME, PASSWORD, DATABASE NAME) 
-    $db->connect();
-	ob_start();
-    if(isset($_GET['action'])) { $action = $_GET['action']; }
-    if(isset($_GET['id']))     { $id = $_GET['id']; }
-    
-?>
+<?  
+include_once "controller.php";
+$controller = new Controller('localhost', 'root', 'root', 'development');
+$controller->insertShoutBox(); ?>
+<br />
+<br />
+<div style="border-top: solid 2px black; padding:5px;">
+<br />
+<br />
+<? $controller->insertShoutBox('blog', 'desc'); ?>
 
-<div id="container"><? include "shout_box.php"; ?></div>
 
-<? 
 
-Render::output();
-Render::input();
-
-?>
+</div>
 
 </body>
 </html>
-
