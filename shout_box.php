@@ -1,10 +1,4 @@
-<?  # Connect to MySQL database
-    include_once "class_lib.php";
-    $db = new Database('localhost', 'root', 'root', 'development'); //- modify database parameters for your connection (HOST, USERNAME, PASSWORD, DATABASE NAME) 
-    $db->connect();
-	ob_start();
-    if(isset($_GET['action'])) { $action = $_GET['action']; }
-    if(isset($_GET['id']))     { $id = $_GET['id']; }
+<?  
     
 	#Connect shout box to database
 	ShoutBox::setConnection($db); 

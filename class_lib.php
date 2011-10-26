@@ -153,4 +153,35 @@ class ShoutBox {
 
 }
 
+class Render extends ShoutBox {
+
+	static function input($name = null, $action = null){
+	/* Prebaci if petlju na SubmitComment a ne submit_text */
+		echo'
+			<div id="input">
+				<form action="'.$action.'" method="post">
+					<input type="hidden" name="submit_comment"/>
+			        <input type="text" size="20" id="'.$name.'ShoutboxNick" name="'.$name.'Nick" value="input name" onclick="this.value=\'\'"/><br />
+			         <textarea id="'.$name.'ShoutboxText" name="'.$name.'CommentText"></textarea><br />
+		        	<input type="submit" id="'.$name.'ShoutboxSubmit" name="'.$name.'SubmitComment" value="Submit"/>
+				</form>	
+			</div>';
+	} 
+
+	static function output () {
+		$output = '<div id="output">'; 
+		foreach(parent::getSorted() as $comment){
+			$output .= ' <ul>
+							<li>
+							<em>On '.$comment->date().', '.$comment->name().' wrote:</em>
+							<p>'.$comment->text().'</p>
+							</li>
+						</ul>';
+		}
+		$output .= '</div>';
+					
+		echo $output;		
+	}
+}
+
 ?>
