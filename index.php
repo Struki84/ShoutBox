@@ -9,10 +9,17 @@
 
 include_once "mvc/controller.php";
 $controller = new Controller('localhost', 'root', 'root', 'development');
-$controller->insertShoutBox(); 
+$controller->insertOutput(); ?>
 
-?>
+<br />
+<br />
+<hr>
+<br />
+<br />
+<? $controller->insertInput(); ?>
 
-<div id="test">test</div>
+
+
+
 </body>
 </html>
