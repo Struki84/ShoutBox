@@ -48,33 +48,29 @@ class Controller{
 		Render::shoutBox($data, $type_id, $order);
 	}
 	
-	public function insertOutput($name = null){
-		$data = $this->sb->getAllData();
-		echo Render::output($data);
+	public function insertOutput($name = null, $order = null){
+		$type_id = self::setTypeId($name);
+		if (!isset($this->status)){
+			$this->status = 1;
+			self::insertPost($type_id);
+		}
+		if ($order != null && $order = 'desc')
+			$data = $this->sb->getDataAsc($type_id);
+		else
+			$data = $this->sb->getData($type_id);
+			
+		echo Render::output($data, $order);
+		
 	}
 	
 	public function insertInput($name = null){
-		echo Render::input($name);
-		echo self::insertPost();	
+		$type_id = self::setTypeId($name);
+		if (!isset($this->status)){
+			$this->status = 1;
+			self::insertPost($type_id);
+		}
+		echo Render::input($type_id);
+
 	}
-	
-	public function allDataOverview(){
-		$data = $this->sb->getAllData();
-		print_r($data);
-	}
-	
-	public function dataOverview($type_id){
-		$data = $this->sb->getData($type_id);
-		print_r($data);
-	}
-	
-	/*
-		
-		#This one goes out if there is no delete link
-		if ($action == 'delete') {
-			ShoutBox::deleteOne($id);
-			header('Location:index.php');
-	
-		}*/
 }	
 ?>
