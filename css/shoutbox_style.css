@@ -1,0 +1,9 @@
+/* STYLE FOR THE ONE NO NAME SHOUT BOX ON THE INDEX PAGE */
+
+/*all the id's you can use to style your shout_box*/
+
+#singleShoutbox{ float: left; color: white; background-color: black;}
+#singleShoutbox output {background-color: grey;}
+
+
+ 

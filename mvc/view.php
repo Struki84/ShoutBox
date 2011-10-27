@@ -11,7 +11,7 @@ class Render {
 				<form action="" method="post">
 					<input type="hidden" name="submit_comment"/>
 			        <input type="text" size="20" id="nick" name="nick" value="input name" onclick="this.value=\'\'"/><br />
-			         <textarea id="comment_text" name="comment_text"></textarea><br />
+			        <textarea id="comment_text" name="comment_text"></textarea><br />
 		        	<input type="submit" id="shoutbox_submit" name="'.$name.'SubmitComment" value="Submit"/>
 				</form>	
 			</div>';

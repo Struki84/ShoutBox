@@ -46,7 +46,6 @@ class Controller{
 			$data = $this->sb->getData($type_id);
 		
 		Render::shoutBox($data, $type_id, $order);
-		echo $type_id;
 	}
 	
 	public function insertOutput($name = null){
