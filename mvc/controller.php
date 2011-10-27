@@ -60,7 +60,6 @@ class Controller{
 			$data = $this->sb->getData($type_id);
 			
 		echo Render::output($data, $order);
-		
 	}
 	
 	public function insertInput($name = null){
@@ -72,5 +71,24 @@ class Controller{
 		echo Render::input($type_id);
 
 	}
+	
+	public function allDataOverview(){
+		$data = $this->sb->getAllData();
+		print_r($data);
+	}
+	
+	public function dataOverview($type_id){
+		$data = $this->sb->getData($type_id);
+		print_r($data);
+	}
+	
+	/*
+		
+		#This one goes out if there is no delete link
+		if ($action == 'delete') {
+			ShoutBox::deleteOne($id);
+			header('Location:index.php');
+	
+		}*/
 }	
 ?>
