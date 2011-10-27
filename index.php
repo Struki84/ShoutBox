@@ -7,18 +7,14 @@
 <body>
 <?  
 
+
 include_once "mvc/controller.php";
 $controller = new Controller('localhost', 'root', 'root', 'development');
-$controller->insertOutput(); ?>
-
-<br />
-<br />
+$controller->insertInput(); ?>
 <hr>
 <br />
 <br />
-<? $controller->insertInput(); ?>
-
-
+<? $controller->insertOutput('', 'desc'); ?>
 
 
 </body>
