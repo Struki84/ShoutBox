@@ -7,88 +7,77 @@ class Controller{
 	
 	protected $sb;
 	protected $type_id;
-	
-	
+	protected $status;
+		
 	public function __construct($dbhost, $dbuser, $dbpass, $dbname, $port = 3306){
 		$this->sb = new Shoutbox($dbhost, $dbuser, $dbpass, $dbname, $port );
 		$this->sb->connect();
 	}
 	
-	public function invoke() {
-		if($_POST['SubmitComment']) {
-			$data = array($_POST['nick'], date("d.m.Y, H:i "), $_POST['comment_text'] );
-			$this->sb->insertData($data);
-		}
-	}
-	
-	public function setTypeId($name){
+	protected function setTypeId($name){
 		if ($name !=null)
-			$type_id = $name;
+			if ($name == 'desc')
+				$type_id = 'single';
+			else 
+				$type_id = $name;
 		else 
 			$type_id = 'single';
 		
 		return $type_id;
 	}
-	
-	public function insertPost($type_id) {
+		
+	protected function insertPost($type_id) {
 		if($_POST[$type_id.'SubmitComment']) {
-			$data = array($type_id, $_POST['nick'], date("d.m.Y, H:i "), $_POST['comment_text'] );
+			$data = array($type_id, $_POST['nick'], $_POST['comment_text'] );
 			$this->sb->insertData($data);
 		}
 	}
 	
+	protected function setOrder($name, $order){
+		if ($name == 'desc' ){
+				$order = $name;
+				return $order;
+		}
+		else if ($name = null && $order !=null)
+			return $order;
+		else 
+			return $order;
+	}
+	
+	protected function setDataOrder($type_id, $order){
+		if ($order == 'desc' )
+			return $this->sb->getDataDesc($type_id);
+		else 			
+			return $this->sb->getData($type_id);
+		}
+	
 	public function insertShoutBox($name = null, $order = null){
 		$type_id = self::setTypeId($name);
 		self::insertPost($type_id);
-		if ($order != null && $order = 'desc')
-			$data = $this->sb->getDataAsc($type_id);
-		else
-			$data = $this->sb->getData($type_id);
-		
+		$order = self::setOrder($name, $order);
+		$data = self::setDataOrder($type_id, $order);
 		Render::shoutBox($data, $type_id, $order);
 	}
-	
+		
 	public function insertOutput($name = null, $order = null){
 		$type_id = self::setTypeId($name);
-		if (!isset($this->status)){
-			$this->status = 1;
+		if ($this->status != $type_id.'_input_on'){
+			$this->status = $type_id.'_output_on';
 			self::insertPost($type_id);
 		}
-		if ($order != null && $order = 'desc')
-			$data = $this->sb->getDataAsc($type_id);
-		else
-			$data = $this->sb->getData($type_id);
-			
-		echo Render::output($data, $order);
+		$order = self::setOrder($name, $order);
+		$data = self::setDataOrder($type_id, $order);
+		echo Render::output($name, $data);
 	}
 	
 	public function insertInput($name = null){
 		$type_id = self::setTypeId($name);
-		if (!isset($this->status)){
-			$this->status = 1;
-			self::insertPost($type_id);
+		if ($this->status != $type_id.'_output_on'){
+			$this->status = $type_id.'_input_on';
+			echo self::insertPost($type_id);
 		}
 		echo Render::input($type_id);
-
 	}
 	
-	public function allDataOverview(){
-		$data = $this->sb->getAllData();
-		print_r($data);
-	}
-	
-	public function dataOverview($type_id){
-		$data = $this->sb->getData($type_id);
-		print_r($data);
-	}
-	
-	/*
-		
-		#This one goes out if there is no delete link
-		if ($action == 'delete') {
-			ShoutBox::deleteOne($id);
-			header('Location:index.php');
-	
-		}*/
 }	
 ?>

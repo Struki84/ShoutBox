@@ -1,9 +1,82 @@
-/* STYLE FOR THE ONE NO NAME SHOUT BOX ON THE INDEX PAGE */
+/* EXAMPLE 1 */
 
 /*all the id's you can use to style your shout_box*/
 
-#singleShoutbox{ float: left; color: white; background-color: black;}
-#singleShoutbox output {background-color: grey;}
+/*Shoutbox*/
+#singleShoutbox{width: 600px; margin:0 auto; color: black; } /*general Shoutbox style*/ 
+
+/*output box*/
+#singleShoutbox #Output { width: 100%; border: solid thin #E18A07; } /*general styling of the output section */
+#singleShoutbox #Output ul { list-style: none; margin: 0; padding: 5px; } /*styling for the list of comment entries*/
+#singleShoutbox #Output ul #info { padding: 3px; background-color: #CCCCCC; font-style: italic; font-size: 14px; } /*styling of the "who" and "when" part*/
+#singleShoutbox #Output ul #comment_text { background-color: #F5F1DE; margin: 0; padding: 3px ; } /*styling of the entered text*/
+
+/*input box*/
+#singleShoutbox #Input { width: 100%; margin-top: 15px; padding: 1px; }
+#singleShoutbox #Input #nick {width: 200px; background-color: #CCCCCC;}
+#singleShoutbox #Input #comment_text { width: 598px; height: 200px; margin:0; padding:0; background-color: #F5F1DE; border: solid thin #E18A07;} 
+#singleShoutbox #Input #shoutbox_submit { width: 200px; margin-top: 10px; margin-left: 200px; margin-bottom:10px;  }
 
 
+/* EXAMPLE 2 */
+
+/*Shoutbox article_comment*/
+#article_commentShoutbox{width: 600px; margin:0 auto; color: black; } /*general Shoutbox style*/ 
+
+/*output box*/
+#article_commentShoutbox #Output { width: 100%; border: solid thin #E18A07; } /*general styling of the output section */
+#article_commentShoutbox #Output ul { list-style: none; margin: 0; padding: 5px; } /*styling for the list of comment entries*/
+#article_commentShoutbox #Output ul #info { padding: 3px; background-color: #CCCCCC; font-style: italic; font-size: 14px; } /*styling of the "who" and "when" part*/
+#article_commentShoutbox #Output ul #comment_text { background-color: #F5F1DE; margin: 0; padding: 3px ; } /*styling of the entered text*/
+
+/*input box*/
+#article_commentShoutbox #Input { width: 100%; margin-top: 15px; padding: 1px; }
+#article_commentShoutbox #Input #nick {width: 200px; background-color: #CCCCCC;}
+#article_commentShoutbox #Input #comment_text { width: 598px; height: 200px; margin:0; padding:0; background-color: #F5F1DE; border: solid thin #E18A07;} 
+#article_commentShoutbox #Input #shoutbox_submit { width: 200px; margin-top: 10px; margin-left: 200px; margin-bottom:10px;  }
+
+/*Shoutbox blog*/
+#blogShoutbox{width: 600px; margin:0 auto; color: black; } /*general Shoutbox style*/ 
+
+/*output box*/
+#blogShoutbox #Output { width: 100%; border: solid thin #E18A07; } /*general styling of the output section */
+#blogShoutbox #Output ul { list-style: none; margin: 0; padding: 5px; } /*styling for the list of comment entries*/
+#blogShoutbox #Output ul #info { padding: 3px; background-color: #CCCCCC; font-style: italic; font-size: 14px; } /*styling of the "who" and "when" part*/
+#blogShoutbox #Output ul #comment_text { background-color: #F5F1DE; margin: 0; padding: 3px ; } /*styling of the entered text*/
+
+/*input box*/
+#blogShoutbox #Input { width: 100%; margin-top: 15px; padding: 1px; }
+#blogShoutbox #Input #nick {width: 200px; background-color: #CCCCCC;}
+#blogShoutbox #Input #comment_text { width: 598px; height: 200px; margin:0; padding:0; background-color: #F5F1DE; border: solid thin #E18A07;} 
+#blogShoutbox #Input #shoutbox_submit { width: 200px; margin-top: 10px; margin-left: 200px; margin-bottom:10px;  }
+
+
+/* EXAMPLE 3 */
+
+/*output box pic_comment*/
+#pic_commentOutput {position: absolute; top: 200px; right:350px; width: 250px; margin-top: 20px; border: solid thin #E18A07;} /*general styling of the output section */
+#pic_commentOutput ul { list-style: none; margin: 0; padding: 5px; } /*styling for the list of comment entries*/
+#pic_commentOutput ul #info { padding: 3px; background-color: #CCCCCC; font-style: italic; font-size: 14px; } /*styling of the "who" and "when" part*/
+#pic_commentOutput ul #comment_text { background-color: #F5F1DE; margin: 0; padding: 3px ; } /*styling of the entered text*/
+
+/*input box pic_comment*/
+#pic_commentInput { width: 350px; margin-top: 15px; padding: 1px; }
+#pic_commentInput #nick {width: 50%; background-color: #CCCCCC;}
+#pic_commentInput #comment_text { width: 100%; height: 200px; margin:0; padding:0; background-color: #F5F1DE; border: solid thin #E18A07;} 
+#pic_commentInput #shoutbox_submit { width: 100px; margin-top: 10px; margin-left: 100px; margin-bottom:10px;  }
+
+/*Shoutbox article*/
+#articleShoutbox{width: 600px; margin:0 auto; color: black; } /*general Shoutbox style*/ 
+
+/*output box*/
+#articleShoutbox #Output { width: 100%; border: solid thin #E18A07; } /*general styling of the output section */
+#articleShoutbox #Output ul { list-style: none; margin: 0; padding: 5px; } /*styling for the list of comment entries*/
+#articleShoutbox #Output ul #info { padding: 3px; background-color: #CCCCCC; font-style: italic; font-size: 14px; } /*styling of the "who" and "when" part*/
+#articleShoutbox #Output ul #comment_text { background-color: #F5F1DE; margin: 0; padding: 3px ; } /*styling of the entered text*/
+
+/*input box*/
+#articleShoutbox #Input { width: 100%; margin-top: 15px; padding: 1px; }
+#articleShoutbox #Input #nick {width: 200px; background-color: #CCCCCC;}
+#articleShoutbox #Input #comment_text { width: 598px; height: 200px; margin:0; padding:0; background-color: #F5F1DE; border: solid thin #E18A07;} 
+#articleShoutbox #Input #shoutbox_submit { width: 200px; margin-top: 10px; margin-left: 200px; margin-bottom:10px;  }
  

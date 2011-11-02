@@ -37,7 +37,7 @@ class ShoutBox{
 	}
 	
 	public function getData($type_id){
-		$select = self::$db->prepare("SELECT * FROM shout_box WHERE type_id=? ");
+		$select = self::$db->prepare("SELECT * FROM shout_box WHERE type_id=? LIMIT 20 ");
 		
 		if($select->execute(array($type_id))){
 			while ($r = $select->fetchObject())
@@ -50,8 +50,8 @@ class ShoutBox{
 		
 	}
 	
-	public function getDataAsc($type_id){
-		$select = self::$db->prepare("SELECT * FROM shout_box WHERE type_id=? ORDER BY date DESC ");
+	public function getDataDesc($type_id){
+		$select = self::$db->prepare("SELECT * FROM shout_box WHERE type_id=? ORDER BY date DESC LIMIT 20 ");
 		
 		if($select->execute(array($type_id))){
 			while ($r = $select->fetchObject())
@@ -59,18 +59,18 @@ class ShoutBox{
 		return $data;
 		}
 		else {
-			return $select->errorCode();
+			return $select->errorInfo();
 		}
 		
 	}
 		
 	public function insertData($data){
-		$insert = self::$db->prepare("INSERT INTO shout_box SET type_id=?, name=?, date=?, text=?");
+		$insert = self::$db->prepare("INSERT INTO shout_box SET type_id=?, name=?, text=?, date=NOW()");
 		
 		if($insert->execute($data))
 			return true;
 		else
-			return $insert->errorCode();
+			return $insert->errorInfo();
 	}
 		
 }

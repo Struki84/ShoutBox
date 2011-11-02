@@ -1,0 +1,86 @@
+<html> 
+<head>
+<title>Documentation</title>
+<style>
+.code { font-family: monospace; }
+
+</style> 
+</head>
+<body>
+
+<a name="top"><h2>Documentation</h2></a>
+<p>Don't worry if you got here you shoud know some html and css, and you should have some idea what php does. It's not big, so read it and with only few lines of code you can have this cool feature on your website :)</p>
+<hr>
+<ul style="list-style:none">
+	<li><a href="../index.php">Home</a></li>
+	<li><a href="#about">About the project</a></li>
+	<li><a href="#howto">How to use</a></li>
+	<li><a href="#methods">Insert methods</a></li>
+	<li><a href="#styling">Styling</a></li>
+	<li><a href="../index.php#example_1">Example 1</a></li>
+	<li><a href="../examples/example_2.php">Example 2</a></li>
+	<li><a href="../examples/example_3.php">Example 3</a></li>
+</ul>
+<hr>
+
+<a name="about"><h3>About the project</h3></a>
+<p>When I first started doing web, one of the first thing I wanted to have on my web was a shoutbox. A basic feedback tool, that most people want on their websites. A place where your web visitors can post their impressions and comments, is, for most people, first piece of dynamic web content they come across. My expirience was no different, natural transition from html/css to my first lines of php and sql, started when I wanted to include this feature in some of my websites. At that time I didn't know much about php or sql, so building a shoutbox was a confusing and furstrating process for me.</p>  
+<p>The idea behind the project, is that you should be able to include this tool in your website with only 2 or 3 lines of code. This is possible trough something called objective programming, that is integrated into php5. Now for some people all of this is well known nad they'r saying: "what is this guy jibbering about, I know all of this", but my idea was to give this tool to people how don't know much about programming and have no intetion learning how to do it, but want a simple home page or an online photo album with some feedback from their visitors. It all started as a small exercise for myself in objective oriented PHP, in combination with my own need for this feature, I wrote this small framework so that I don't need te rewrite the same piece of code over and over again.</p>
+<p><a href="#top">To the top</a></p>
+<hr>
+
+<a name="howto"><h3>How to use</h3></a>
+<p>This <em>should</em> be simple. First, you  need to get all the files needed, since you'r reading this there's a big chance you allready did that, but in case you didn't here is the <a href="https://github.com/Struki84/ShoutBox">link</a>, just press the button which says ZIP.
+Inside the shoutbox folder there should be this documentation, some examples, and the heart of everything, the folder called <b>mvc</b>. The <b>mvc</b> folder is the one you HAVE TO PUT IN YOU'R WEB SITE FOLDER for the whole thing to work, it is essential. There is a css folder which takes care of your shoutbox look and feel, but you can always create your own css file, just make sure to link it properly, more on that later. The other really important thing is the <b>shout_box_table.sql</b> file. You will need this to create you'r database table where all the comments and the data about your visitors will be stored. If you don't know what I'm talking about, best advice would be to google about phpmyadmin, and how to create a database, then login into you'r phpmyadmin, usually by going to <em>http://www.yourdomain.com/phpmyadmin</em> create your database and then import the <b>shout_box_table.sql</b> file. If you never used phpmyadmin, don't freak out it's not that hard, basic point and click, just spend 20 mins googling and reading and you'll get it.</p>
+<p>If you don't have much expirience with this things, follow my lead. In you'r root folder(thats the one with your index file) create a new folder called <b>shoutbox</b>. Inside that folder copy the folders <b>mvc</b> and <b>css</b> from the folder you just downloaded. Now, keep in mind one thing, you can include the shoutbox only in the files that have *.php extension, so before including your shoutbox change the extension of the file where you will do the insertion.</p>
+<p>So if  you followed my lead, you should have one file named, <b>some_file.php</b>, in that file first line of code you should put is:</p>
+<p class="code">require "shoutbox/mvc/controller.php"</p>
+<p>This will include all the files needed for the shoutbox to work in you'r some_file.php, so if you want to include it in some other file you should put the same line on top of you'r some_other_file.php. Next, you have to start the engine, in this case it's called instancing an object, if you want to now more google it, if not just type:</p>
+<p class="code">$controller = new Controller('host', 'username', 'password', 'database_name', 'port');</p>
+<p>This line will start all the logic needed to run the shoutbox and connect to your database by creating controller object. The variable <b>$controller</b> is called the handler, it handles your object Controller and you can call it anything you want, <b>$shoutbox</b> for example, again google if you are interested for more info. Of course you have to fill in the parameters for your database and change 'host' with you'r host (usually <em>'localhost'</em>), 'username' with you'r database user and so on. So this line filled properly should look something like this </p>
+<p class="code">$controller = Controller('localhost', 'root', 'r00t', 'development')</p>
+<p>This is an example for my database, you should do the same but acording to your database parameters. The port parameter is not set in my example, bacuse it's preset as the default MySQL port 3306 which in 99% of time won't change, but if it does, just put the changed one in, at the end of the line. Now there is a small warning I must issue, if by some chance you are using some other framework or/and some other class library you shoudn't have two handlers of the same name on the same site. Also, you could construct your web site so that you have to include the  controller.php file only once, and so that you have to create the object Controller only once, but then you should look into some more php and how to include them into one strucutre. But in the meantime, you have to include the file and instaciate the object for each page you want your shoutbox in.</p>
+<p>Thats it! Everything is set for using the shoutbox and the good news is, this was the hard part. There are 4 ways you can include a shoutbox on your page, so in the next chapter all the methods are explained.</p>
+<p><b>For the advanced users!</b></p>
+<p>All the connections to the database and queries are handled in <b>mvc/model.php</b>, <b>mvc/controller.php</b> takes care of the communication user-data, and the form is in <b>mvc/view.php.</b></p>
+<p><a href="#top">To the top</a></p>
+<hr>
+
+<a name="methods"><h3>Insert methods</h3></a>
+<p>The methods described here are what actually generates the shoutbox.</p>
+<ul class="code">
+	<li>insertShoutBox('name', 'order');</li>
+	<li>insertInput('name');</li>
+	<li>insertOutput('name', 'order');</li>
+</ul>
+<p>Inside there are parameters <em>name</em> and <em>order</em>.</p>
+<p><em class="code">name</em> - names your shoutbox, you can leave this blank/null, BUT ONLY, AND I MEAN ONLY IF YOU ARE GOING TO INPUT ONLY ONE SHOUTBOX IN YOU'R ENTIRE WEBSITE. Otherwise the thing won't work right. So if you are going to use 2 or more shouboxes you have to name them or you can pass another variable like $blog_id or something</p>
+<p><em class="code">order</em> - will set order you want the shout box to appear, by default its set to ascend. Meaning that the input form and the latest post will be on the bottom. Input <em class="code">'desc'</em>, to reverse the order, meaning the form and the latest post will bo on top.</p>
+<p>These methods are written inside the object we just created, and the handler is the thing that..., well handles them. So the way that you call the methods is trough the handler by typing:</p>
+<p class="code"><b>$controller->insertShoutBox(<em>'name', 'order'</em>);</b></p>
+<p><b>Case 1: single shoutbox on the web site!</b></p>
+<p>You don't need to input <em>name</em> it is optinal as is <em>order</em>. You can then use the methods:</p>
+<p><p class="code">$controller->insertShoutBox('order');</p></p>
+<p>It will generate the entire shoutbox inside a div tag and assign the preset default id <em>singleShoutBox</em>.</p>
+<p class="code">$controller->insertInput();</p>
+<p class="code">$controller->insertOutput('order');</p>
+<p>This two methods are used when you want to seperate the input and the output and put them in different places on a page, or even within the website. The output method can also have the order paramater set.</p>
+<p><b>Case 2: Multiple shoutboxes</b></p>
+<p>In this case YOU NEED TO SET THE NAME PARAMETER. Everything else works exactly the same as in case 1. Keep in mind that if you use input and output methods they need to have the same name.</p>
+<p class="code">$controller->insertInput('blog');</p>
+<p class="code">$controller->insertOutput('blog', 'order');</p>
+<p><a href="#top">To the top</a></p>
+<hr>
+<a name="styling"><h3>Styling</h3></a>
+<p>This is simple, elements are all preset and the ids are half-generated. Look into the css <a href="../css/shoutbox_style.css">file</a> for more details. The logic is that when you enter a name for your shoutbox, it is automaticly appended to the elemnent id. So in the case of a single shoutbox the code knows it's the only shoutbox, so you get the id for the entire shoutbox div</p>
+<p class="code">#singleShoutBox{/*some css here*/}</p>
+<p>And in the case where you input you'r custom name you will get css tag that looks like</p>
+<p class="code">#your_nameShoutBox{/*some css here*/}</p>
+<p>You can create your own css code wherever you want the only thing to keep in mind is the name of the shoutbox you entered and append it to the preset id starting with the capital letter.</p>
+<p><a href="#top">To the top</a></p>
+<hr>
+
+
+
+</body>
+</html>
