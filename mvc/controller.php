@@ -28,7 +28,7 @@ class Controller{
 		
 	protected function insertPost($type_id) {
 		if($_POST[$type_id.'SubmitComment']) {
-			$data = array($type_id, $_POST['nick'], $_POST['comment_text'] );
+			$data = array($type_id, htmlentities($_POST['nick']), htmlentities($_POST['comment_text']) );
 			$this->sb->insertData($data);
 		}
 	}
