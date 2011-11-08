@@ -5,7 +5,7 @@ class ShoutBox{
 	static protected $db;
 	protected $dbhost;
 	protected $dbuser;
-    protected $dbpass;
+        protected $dbpass;
 	protected $dbname;
 	protected $port;
 		
