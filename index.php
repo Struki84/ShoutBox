@@ -15,6 +15,8 @@ $controller = new Controller('localhost', 'root', 'root', 'development');
 	<li style="display: inline;"><a href="documentation/index.html">Documentation</a></li>
 	<li style="display: inline;"><a href="examples/example_2.php">Example 2</a></li>
 	<li style="display: inline;"><a href="examples/example_3.php">Example 3</a></li>
+	<li style="display: inline;"><a href="http://github.com/Struki84/ShoutBox" target="_blank">Download</a></li>
+	
 </ul>
 <p>Get a shoutbox on you'r website with a single line of code!</p>
 <p>This is an example of a single shoutbox on a web site. For this to work properly you must have a database on a local computer or a remote webserver. Use the sql <a href = "shout_box_table.sql" >file</a> to create the shout_box table. DON'T change the name of the fields if you don't understand exactly what you are doing.</p>
