@@ -18,7 +18,7 @@ class ShoutBox{
 	}
 	
 	public function connect(){
-		$dsn = "mysql:host=$this->dbhost; port=self::$this->port;dbname=$this->dbname";
+		$dsn = "mysql:host=$this->dbhost; port=$this->port;dbname=$this->dbname";
 		self::$db = new PDO($dsn, $this->dbuser, $this->dbpass); 
 	}
 	
@@ -31,7 +31,7 @@ class ShoutBox{
 		return $data;
 		}
 		else {
-			return $select->errorCode();
+			return $select->errorInfo();
 		}
 		
 	}
@@ -45,7 +45,7 @@ class ShoutBox{
 		return $data;
 		}
 		else {
-			return $select->errorCode();
+			return $select->errorInfo();
 		}
 		
 	}
@@ -63,6 +63,15 @@ class ShoutBox{
 		}
 		
 	}
+	
+	public function get($type_id, $order){
+		if ($order != null && $order == 'desc' ){ 
+			return $this->getDataDesc($type_id);
+		}
+		else{ 			
+			return $this->getData($type_id);
+		}
+	}
 		
 	public function insertData($data){
 		$insert = self::$db->prepare("INSERT INTO shout_box SET type_id=?, name=?, text=?, date=NOW()");
@@ -72,7 +81,7 @@ class ShoutBox{
 		else
 			return $insert->errorInfo();
 	}
-		
+	
 }
 	
 	

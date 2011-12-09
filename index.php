@@ -32,7 +32,7 @@ Credibly drive cooperative collaboration and idea-sharing for covalent technolog
 Seamlessly matrix sustainable relationships with resource sucking meta-services. Rapidiously streamline intuitive e-markets and B2B schemas. Distinctively grow virtual relationships after viral e-tailers. 
 
 Enthusiastically actualize backend leadership skills via B2B testing procedures. Proactively foster frictionless quality vectors for superior products. Dynamically monetize installed base deliverables before front-end scenarios. <h3>Comments</h3>
-<?php $controller->insertShoutBox('desc'); ?>
+<?php $controller->insertShoutBox('single', 'single', 'desc'); ?>
 <br />
 <hr>
 </body>

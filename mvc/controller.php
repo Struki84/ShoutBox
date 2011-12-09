@@ -1,7 +1,6 @@
 <?
 
-require "model.php";
-require "view.php";
+include("view.php");
 
 class Controller{
 	
@@ -14,18 +13,6 @@ class Controller{
 		$this->sb->connect();
 	}
 	
-	protected function setTypeId($name){
-		if ($name !=null)
-			if ($name == 'desc')
-				$type_id = 'single';
-			else 
-				$type_id = $name;
-		else 
-			$type_id = 'single';
-		
-		return $type_id;
-	}
-		
 	protected function insertPost($type_id) {
 		if($_POST[$type_id.'SubmitComment']) {
 			$data = array($type_id, htmlentities($_POST['nick']), htmlentities($_POST['comment_text']) );
@@ -33,50 +20,27 @@ class Controller{
 		}
 	}
 	
-	protected function setOrder($name, $order){
-		if ($name == 'desc' ){
-				$order = $name;
-				return $order;
-		}
-		else if ($name = null && $order !=null)
-			return $order;
-		else 
-			return $order;
-	}
-	
-	protected function setDataOrder($type_id, $order){
-		if ($order == 'desc' )
-			return $this->sb->getDataDesc($type_id);
-		else 			
-			return $this->sb->getData($type_id);
-		}
-	
-	public function insertShoutBox($name = null, $order = null){
-		$type_id = self::setTypeId($name);
+	public function insertShoutBox($name, $type_id, $order = null ){
 		self::insertPost($type_id);
-		$order = self::setOrder($name, $order);
-		$data = self::setDataOrder($type_id, $order);
-		Render::shoutBox($data, $type_id, $order);
+		$data = $this->sb->get($type_id, $order);
+		Render::shoutBox($data, $name, $order);
 	}
 		
-	public function insertOutput($name = null, $order = null){
-		$type_id = self::setTypeId($name);
+	public function insertOutput($name, $type_id, $order = null){
 		if ($this->status != $type_id.'_input_on'){
 			$this->status = $type_id.'_output_on';
 			self::insertPost($type_id);
 		}
-		$order = self::setOrder($name, $order);
-		$data = self::setDataOrder($type_id, $order);
+		$data = $this->sb->get($type_id, $order);
 		echo Render::output($name, $data);
 	}
 	
-	public function insertInput($name = null){
-		$type_id = self::setTypeId($name);
+	public function insertInput($name, $type_id){
 		if ($this->status != $type_id.'_output_on'){
 			$this->status = $type_id.'_input_on';
 			echo self::insertPost($type_id);
 		}
-		echo Render::input($type_id);
+		echo Render::input($name);
 	}
 	
 }	

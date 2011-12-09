@@ -24,7 +24,7 @@ Credibly drive cooperative collaboration and idea-sharing for covalent technolog
 Seamlessly matrix sustainable relationships with resource sucking meta-services. Rapidiously streamline intuitive e-markets and B2B schemas. Distinctively grow virtual relationships after viral e-tailers. 
 
 Enthusiastically actualize backend leadership skills via B2B testing procedures. Proactively foster frictionless quality vectors for superior products. Dynamically monetize installed base deliverables before front-end scenarios. <h3>Comments</h3>
-<?php $controller->insertShoutBox('article_comment','desc'); ?>
+<?php $controller->insertShoutBox('article_comment', 'article_comment', 'desc'); ?>
 <br />
 <hr>
 <h3>Your blog post</h3>
@@ -35,7 +35,7 @@ Credibly drive cooperative collaboration and idea-sharing for covalent technolog
 Seamlessly matrix sustainable relationships with resource sucking meta-services. Rapidiously streamline intuitive e-markets and B2B schemas. Distinctively grow virtual relationships after viral e-tailers. 
 
 Enthusiastically actualize backend leadership skills via B2B testing procedures. Proactively foster frictionless quality vectors for superior products. Dynamically monetize installed base deliverables before front-end scenarios. <h3>Comments</h3>
-<?php $controller->insertShoutBox('blog'); ?>
+<?php $controller->insertShoutBox('blog', 'blog'); ?>
 <br />
 <hr>
 </body>

@@ -19,8 +19,8 @@ $controller = new Controller('localhost', 'root', 'root', 'development');
 <h3>Cool picture</h3>
 <img src="h_accretion_disk_02.jpg">
 <? 
-$controller->insertInput('pic_comment');
-$controller->insertOutput('pic_comment'); ?>
+$controller->insertInput('pic_comment', 'pic_comment');
+$controller->insertOutput('pic_comment', 'pic_comment'); ?>
 <br />
 <hr>
 <h3>Article</h3>
@@ -31,7 +31,7 @@ Credibly drive cooperative collaboration and idea-sharing for covalent technolog
 Seamlessly matrix sustainable relationships with resource sucking meta-services. Rapidiously streamline intuitive e-markets and B2B schemas. Distinctively grow virtual relationships after viral e-tailers. 
 
 Enthusiastically actualize backend leadership skills via B2B testing procedures. Proactively foster frictionless quality vectors for superior products. Dynamically monetize installed base deliverables before front-end scenarios. <h3>Comments</h3>
-<?php $controller->insertShoutBox('article', 'desc'); ?>
+<?php $controller->insertShoutBox('article', 'article', 'desc'); ?>
 <br />
 <hr>
 </body>
