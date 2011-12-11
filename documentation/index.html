@@ -40,7 +40,7 @@ Inside the shoutbox folder there should be this documentation, some examples, an
 <p>This line will start all the logic needed to run the shoutbox and connect to your database by creating controller object. The variable <b>$controller</b> is called the handler, it handles your object Controller and you can call it anything you want, <b>$shoutbox</b> for example, again google if you are interested for more info. Of course you have to fill in the parameters for your database and change 'host' with you'r host (usually <em>'localhost'</em>), 'username' with you'r database user and so on. So this line filled properly should look something like this </p>
 <p class="code">$controller = Controller('localhost', 'root', 'r00t', 'development')</p>
 <p>This is an example for my database, you should do the same but acording to your database parameters. The port parameter is not set in my example, bacuse it's preset as the default MySQL port 3306 which in 99% of time won't change, but if it does, just put the changed one in, at the end of the line. Now there is a small warning I must issue, if by some chance you are using some other framework or/and some other class library you shoudn't have two handlers of the same name on the same site. Also, you could construct your web site so that you have to include the  controller.php file only once, and so that you have to create the object Controller only once, but then you should look into some more php and how to include them into one strucutre. But in the meantime, you have to include the file and instaciate the object for each page you want your shoutbox in.</p>
-<p>Thats it! Everything is set for using the shoutbox and the good news is, this was the hard part. There are 4 ways you can include a shoutbox on your page, so in the next chapter all the methods are explained.</p>
+<p>Thats it! Everything is set for using the shoutbox and the good news is, this was the hard part.</p>
 <p><b>For the advanced users!</b></p>
 <p>All the connections to the database and queries are handled in <b>mvc/model.php</b>, <b>mvc/controller.php</b> takes care of the communication user-data, and the form is in <b>mvc/view.php.</b></p>
 <p><a href="#top">To the top</a></p>
@@ -49,34 +49,28 @@ Inside the shoutbox folder there should be this documentation, some examples, an
 <a name="methods"><h3>Insert methods</h3></a>
 <p>The methods described here are what actually generates the shoutbox.</p>
 <ul class="code">
-	<li>insertShoutBox('name', 'order');</li>
-	<li>insertInput('name');</li>
-	<li>insertOutput('name', 'order');</li>
+	<li>insertShoutBox('name', 'type', 'order');</li>
+	<li>insertInput('name', 'type');</li>
+	<li>insertOutput('name', 'type', 'order');</li>
 </ul>
-<p>Inside there are parameters <em>name</em> and <em>order</em>.</p>
-<p><em class="code">name</em> - names your shoutbox, you can leave this blank/null, BUT ONLY, AND I MEAN ONLY IF YOU ARE GOING TO INPUT ONLY ONE SHOUTBOX IN YOU'R ENTIRE WEBSITE. Otherwise the thing won't work right. So if you are going to use 2 or more shouboxes you have to name them or you can pass another variable like $blog_id or something</p>
-<p><em class="code">order</em> - will set order you want the shout box to appear, by default its set to ascend. Meaning that the input form and the latest post will be on the bottom. Input <em class="code">'desc'</em>, to reverse the order, meaning the form and the latest post will bo on top.</p>
+<p>Inside there are parameters <em>name</em>, <em>type</em> and <em>order</em>.</p>
+<p><em class="code">name</em> - The name of the shoutbox is assigned as a css id attribute which is used when creating style for the shoutbox</p>
+<p><em class="code">type</em> - Will specify what the shoutbox is used for, so when getting the posts from the database (or putting them in), they will bi associated with the shoutbox of that type. If for eg. you whant to use it as a blog comment tool, you can use one css style nd pass the blog id for specific blog type.</p>
+<p><em class="code">order</em> - Will set order you want the shout box to appear, by default its set to ascend. Meaning that the input form and the latest post will be on the bottom. Input <em class="code">'desc'</em>, to reverse the order, meaning the form and the latest post will bo on top.</p>
 <p>These methods are written inside the object we just created, and the handler is the thing that..., well handles them. So the way that you call the methods is trough the handler by typing:</p>
-<p class="code"><b>$controller->insertShoutBox(<em>'name', 'order'</em>);</b></p>
-<p><b>Case 1: single shoutbox on the web site!</b></p>
-<p>You don't need to input <em>name</em> it is optinal as is <em>order</em>. You can then use the methods:</p>
-<p><p class="code">$controller->insertShoutBox('order');</p></p>
-<p>It will generate the entire shoutbox inside a div tag and assign the preset default id <em>singleShoutBox</em>.</p>
-<p class="code">$controller->insertInput();</p>
-<p class="code">$controller->insertOutput('order');</p>
-<p>This two methods are used when you want to seperate the input and the output and put them in different places on a page, or even within the website. The output method can also have the order paramater set.</p>
-<p><b>Case 2: Multiple shoutboxes</b></p>
-<p>In this case YOU NEED TO SET THE NAME PARAMETER. Everything else works exactly the same as in case 1. Keep in mind that if you use input and output methods they need to have the same name.</p>
-<p class="code">$controller->insertInput('blog');</p>
-<p class="code">$controller->insertOutput('blog', 'order');</p>
+<p class="code"><b>$controller->insertShoutBox(<em>'name', 'type', 'order'</em>);</b></p>
+<p>It will generate the entire shoutbox inside a div tag and assign the id <em>nameShoutBox</em>.</p>
+<p class="code">$controller->insertInput('name', 'type');</p>
+<p class="code">$controller->insertOutput('name', 'type', 'order');</p>
+<p>This two methods are used when you want to seperate the input and the output and put them in different places on a page, or even within the website. Keep in mind that if you use input and output methods they need to have the same type.</p>
 <p><a href="#top">To the top</a></p>
 <hr>
 <a name="styling"><h3>Styling</h3></a>
-<p>This is simple, elements are all preset and the ids are half-generated. Look into the css <a href="../css/shoutbox_style.css">file</a> for more details. The logic is that when you enter a name for your shoutbox, it is automaticly appended to the elemnent id. So in the case of a single shoutbox the code knows it's the only shoutbox, so you get the id for the entire shoutbox div</p>
-<p class="code">#singleShoutBox{/*some css here*/}</p>
-<p>And in the case where you input you'r custom name you will get css tag that looks like</p>
+<p>This is simple, elements are all preset and the ids are half-generated. Look into the css <a href="../css/shoutbox_style.css">file</a> for more details. The logic is that when you enter a name for your shoutbox, it is automaticly appended to the elemnent id. So in the case where you input entire shoutbox you get the id for the entire shoutbox div specified by the <em class="code">name</em> parameter.</p>
 <p class="code">#your_nameShoutBox{/*some css here*/}</p>
-<p>You can create your own css code wherever you want the only thing to keep in mind is the name of the shoutbox you entered and append it to the preset id starting with the capital letter.</p>
+<p>You can create your own css code wherever you want the only thing to keep in mind is the name of the shoutbox you entered and append it to the preset id starting with the capital letter. Also if you use input and output separately you have to keep track of the name parameter when creating css:</p>
+<p class="code">#your_nameOutput{/*some css here*/}</p>
+<p class="code">#your_nameInput{/*some css here*/}</p>
 <p><a href="#top">To the top</a></p>
 <hr>
 
